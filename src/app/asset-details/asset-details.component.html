@@ -1,0 +1,113 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentAsset.assetid">
+      <h4>Asset</h4>
+      
+      <div>
+        <label><strong>Name:</strong></label> 
+        {{ currentAsset.name }}
+      </div>
+     
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentAsset.description }}
+      </div>
+     
+      <div>
+        <label><strong>Input date:</strong></label>
+        {{ currentAsset.inputdate }}
+      </div>
+
+      <div>
+        <label><strong>Cost center name:</strong></label>
+        {{ currentAsset.costcenter.employee.costcenter }}
+      </div>
+  
+      <br>
+      <a
+        class="buttonEdit"
+        routerLink="/asset/{{ currentAsset.assetid}}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentAsset">
+      <br />
+      
+      <p>Please click on an Asset...</p>
+    </div>
+  </div>
+
+<br>
+  <ng-template #editable>
+    <div *ngIf="currentAsset.assetid" class="edit-form">
+      <h4>Asset</h4>
+      <form>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentAsset.name"
+            name="name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentAsset.description"
+            name="description"
+          />
+        </div>
+      
+        <div class="form-group">
+          <label for="costcenter">Cost Center </label>
+          <select
+            type="text"
+            class="form-control"
+            id="costcenter"
+            [(ngModel)]="costcenterIndex"
+            name="costcenter"
+            
+            >
+            <option *ngFor="let costcenter of costcenters; let Position = index" [value]="Position">
+               {{costcenter.employee.costcenter}}
+            </option>
+           </select>
+         </div> 
+         
+        
+       
+       
+      </form>
+  
+      <br>
+  
+      <button class="buttonEdit" (click)="deleteAsset();">
+        Delete
+      </button>
+     <br>
+      <br>
+      <button
+        type="submit"
+        class="buttonEdit"
+        (click)="updateAsset()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    
+    <div *ngIf="!currentAsset.assetid">
+      <br />
+      <p>Cannot access this Asset...</p>
+    </div>
+  </ng-template>
+  

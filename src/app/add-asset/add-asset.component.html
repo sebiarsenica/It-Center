@@ -1,0 +1,57 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              [(ngModel)]="asset.name"
+              name="name"
+              placeholder="This field cannot be empty"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              required
+              [(ngModel)]="asset.description"
+              name="description"
+              placeholder="This field cannot be empty"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="asset.costcenter">Cost Center </label>
+            <select
+              type="text"
+              class="form-control"
+              id="asset.costcenter"
+              [(ngModel)] = "costCenterIndex"
+              name="asset.costcenter"
+             
+              >
+              <option *ngFor="let costcenter of costcenters; let indexOfElement = index" [value]="indexOfElement">
+                {{costcenter.employee.costcenter}}
+              </option>
+             </select>
+           </div> 
+    
+  <br>
+        <button (click)="saveAsset()" class="button">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Asset was submitted successfully!</h4>
+        <button class="button" (click)="newAsset()">Add</button>
+      </div>
+    </div>
+  </div>
+  

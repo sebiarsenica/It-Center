@@ -1,0 +1,29 @@
+<div class = "edit-form">
+<form>
+    <div class="form-group">
+        <label for="employee">Employee </label>
+        <select
+          type="text"
+          class="form-control"
+          id="employee"
+          [(ngModel)]="employeeIndex"
+          name="employee"
+          
+          >
+          <option *ngFor="let employee of employees; let Position = index" [value]="Position">
+             {{employee.name}}
+          </option>
+         </select>
+       </div> 
+</form>
+
+<br>
+
+<button class="button" (click)="updateAssetEmployee();">
+    Update
+  </button>
+<br>
+<button class="button" (click)="deleteAssetEmployee();">
+    Delete
+  </button>
+</div>

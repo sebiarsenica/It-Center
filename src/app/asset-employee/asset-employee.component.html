@@ -1,0 +1,77 @@
+<div class="input-group ">
+    <div class="input-group-append">
+      <button
+        class="button"
+        (click) = "orderByAssetName()"
+      >
+        Order By Asset Name
+      </button>
+    </div>
+
+    <div class="input-group-append">
+        <button
+          class="button"
+          (click) = "orderByEmployeeName()"
+        >
+          Order By Employee Name
+        </button>
+      </div> 
+
+      <input
+      type="text"
+      class="form-control"
+      placeholder="Search by employee name"
+      [(ngModel)]="name"
+    />
+    <div class="input-group-append">
+      <button
+        class="button"
+        (click)="searchByEmployee()"
+      >
+        Search
+      </button>
+    </div>
+
+
+    <div class = "input-group-append">
+        <a href="http://localhost:8080/assetEmployee/pdf" class = "button">Export end of life not reached</a>
+    </div>
+  
+    
+  </div>
+
+
+<div class = "tableContainer">
+<table class = "table" >
+    <thead>
+    <tr>
+        <th class = "thead-dark">Asset name</th> 
+        <th class = "thead-dark">Employee name</th>
+        <th class = "thead-dark">From</th>
+        <th class = "thead-dark">To</th>
+        <th class = "thead-dark">Cost center name</th>
+        <th class = "thead-dark">End of life</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor = "let asset of assetEmployees; let i = index"
+    [class.active]="i == currentIndex"
+    (click)="setActiveAssetEmployee(asset, i) "
+   
+    > 
+    <td>{{asset?.ids?.asset?.name}}</td>
+    <td>{{asset?.ids?.employee?.name}}</td>
+    <td>{{asset.fromm}}</td>
+    <td>{{asset.too}}</td>
+    <td>{{asset?.costcenter?.employee?.costcenter}}</td>
+    <td>{{asset?.endoflife?.toString()?.substring(0,10)}}</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+

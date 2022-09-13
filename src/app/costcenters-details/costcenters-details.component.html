@@ -1,0 +1,84 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentCostCenter.cstcnr">
+      <h4>Cost center</h4>
+      <div>
+        <label><strong>Cost center name:</strong></label> {{ currentCostCenter.employee?.costcenter }}
+      </div>
+    <div>
+        <label><strong>Cost center employee name:</strong></label>
+        {{ currentCostCenter.employee?.name }}
+      </div>
+      <div>
+        <label><strong>Deleted:</strong></label>
+        {{ currentCostCenter.cstcdeleteflag ? "Deleted" : "Not deleted" }}
+      </div>
+  <br>
+      <a
+        class="buttonEdit"
+        routerLink="/costcenter/{{ currentCostCenter.cstcnr }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentCostCenter">
+      <br />
+      
+      <p>Please click on a Cost center...</p>
+    </div>
+  </div>
+
+<br>
+  <ng-template #editable>
+    <div *ngIf="currentCostCenter.cstcnr" class="edit-form">
+      <h4>Cost Center</h4>
+      <form>
+      
+        <div class="form-group">
+          <label for="employee">Employee </label>
+          <select
+            type="text"
+            class="form-control"
+            id="employee"
+            *ngIf = "currentCostCenter.employee.id"
+            [(ngModel)]="currentCostCenter.employee.id"
+            name="employee"
+            >
+            <option *ngFor="let emp of employees" [value]="emp.id">
+               {{emp.name}}
+            </option>
+           </select>
+         </div> 
+         
+        <div>
+            <label><strong>Status:</strong></label>
+            {{ currentCostCenter.cstcdeleteflag ? "Deleted" : "Not Deleted" }}
+          </div>
+       
+       
+      </form>
+  
+      <br>
+  
+      <button class="button" (click)="deleteCostCenter();">
+        Delete
+      </button>
+     
+      <br>
+      <button
+        type="submit"
+        class="button"
+        (click)="updateCostCenter()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    
+    <div *ngIf="!currentCostCenter.cstcnr">
+      <br />
+      <p>Cannot access this Tutorial...</p>
+    </div>
+  </ng-template>
+  

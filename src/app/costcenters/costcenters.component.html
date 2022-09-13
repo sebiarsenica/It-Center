@@ -1,0 +1,71 @@
+<div class="input-group ">
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="orderByEmployeeName()"
+    >
+      Order By Employee Name
+    </button>
+  </div>
+
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="orderByCostCenterName()"
+    >
+      Order By Cost Center Name
+    </button>
+  </div>
+
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search by name"
+    [(ngModel)]="name"
+  />
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="searchByCostCenterName()"
+    >
+      Search by Cost Center Name
+    </button>
+  </div>
+
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="searchByEmployeeName()"
+    >
+      Search by Employee Name
+    </button>
+  </div>
+</div>
+
+<br>
+<div class="box__split">
+<div class="costCenterDetails">
+    <app-costcenters-details
+      [viewMode]="true"
+      [currentCostCenter]="currentCostCenter"
+    ></app-costcenters-details>
+  </div>
+</div>
+
+<div class="list__container">
+  <div class="box__two">
+    <ul style = "list-style : none " class="list-group"> 
+       <li class = "list-group-item">Cost Center -- Employee Name</li>
+        <li
+          class="list-group-item"
+          *ngFor="let cstc of costCenters; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCostCenter(cstc, i)"
+        >
+        {{cstc.employee?.costcenter}} -- {{cstc.employee?.name}}
+        </li>
+      </ul>
+     </div>
+    </div>
+     
+   

@@ -1,0 +1,83 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form-group">
+            <label for="assetname">Asset Name </label>
+            <select
+              type="text"
+              class="form-control"
+              id="assetname"
+              [(ngModel)] = "assetIndex"
+              name="assetname"
+              >
+              <option *ngFor="let asset of assets; let indexOfElement = index" [value]="indexOfElement">
+                {{asset.name}}
+              </option>
+             </select>
+           </div> 
+
+           <div class="form-group">
+            <label for="employeename">Employee Name </label>
+            <select
+              type="text"
+              class="form-control"
+              id="employeename"
+              [(ngModel)] = "employeeIndex"
+              name="employeename"
+              >
+              <option *ngFor="let employee of employees; let indexOfElement = index" [value]="indexOfElement">
+                {{employee.name}}
+              </option>
+             </select>
+           </div> 
+       
+        <div class="form-group">
+            <label for="from">From</label>
+            <input
+              type="date"
+              class="form-control"
+              id="from"
+              required
+              [(ngModel)]="assetEmployee.fromm"
+              name="from"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="to">To</label>
+            <input
+              type="date"
+              class="form-control"
+              id="to"
+              required
+              [(ngModel)]="assetEmployee.too"
+              name="to"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="end">End of Life</label>
+            <input
+              type="date"
+              class="form-control"
+              id="end"
+              required
+              [(ngModel)]="assetEmployee.endoflife"
+              name="end"
+            />
+          </div>
+
+          
+    
+  <br>
+        <button (click)="saveAssetEmployee()" class="button">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Asset was submitted successfully!</h4>
+        <button class="button" (click)="newAssetEmployee()">Add</button>
+      </div>
+    </div>
+  </div>
+  

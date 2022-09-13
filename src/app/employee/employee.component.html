@@ -1,0 +1,65 @@
+<div class="input-group ">
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="OrderByNameAsc()"
+    >
+      Order By Name Asc
+    </button>
+  </div>
+
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search by name"
+    [(ngModel)]="name"
+    
+  />
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="searchByName()"
+    >
+      Search
+    </button>
+  </div>
+  
+  
+  <div class="input-group-append">
+    <button
+      class="button"
+      (click)="OrderByNameDesc()"
+    >
+      Order By Name Desc
+    </button>
+  </div>
+</div>
+
+<div class="box__split">
+ <div class="employeeDetails">
+  <app-employee-details
+    [viewMode]="true"
+    [currentEmployee]="currentEmployee"
+  ></app-employee-details>
+ </div>
+</div>
+
+<br>
+<div class="list__container">
+  <div class="box__split">
+  <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let emp of employees; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveEmployee(emp, i)"
+      >
+      {{emp.name}}
+     </li>
+    </ul>
+  </div>
+  </div>
+   
+
+
+ 

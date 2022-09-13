@@ -1,0 +1,58 @@
+
+* {
+    box-sizing: border-box;
+}
+.list__container {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto;
+    float: center;
+    width: auto; 
+    height: auto;
+    } 
+
+.list-group-item{ 
+width: 500px;
+}
+      
+.list-group{ 
+position:relative;
+text-align : center;
+}
+
+.AssetDetails{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    width: auto; 
+    height: auto;
+}
+
+.box__two {
+    width: 50%;
+    float: right;
+}
+
+.button:hover{
+    background: rgb(28, 5, 198);
+    transition: all 1s ease;
+  }
+  
+  .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #f77062;
+    color: #fff;
+  }
+  
+  

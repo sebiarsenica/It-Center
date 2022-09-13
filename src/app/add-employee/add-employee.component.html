@@ -1,0 +1,58 @@
+
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        
+        <div class="form-group">
+          <label for="name" class = "form-label">Name</label>
+          
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="employee.name"
+            name="name"
+            required
+            placeholder="This field cannot be empty"
+          />
+         </div>
+  
+        <div class="form-group">
+            <label for="costcenter" class = "form-label">Cost Center</label>
+            <input
+              type="text"
+              class="form-control"
+              id="costcenter"
+              required
+              [(ngModel)]="employee.costcenter"
+              name="costcenter"
+              placeholder="This field cannot be empty"
+            
+            />
+          </div>
+        
+          <div class="form-group">
+            <label for="manager" class = "form-label">Manager</label>
+            <input
+              type="text"
+              class="form-control"
+              id="manager"
+              required
+              [(ngModel)]="employee.manager"
+              name="manager"
+              placeholder="This field cannot be empty"
+            />
+          </div>
+    
+  <br>
+        <button  class="button" (click) = "saveEmployee()" >Submit</button>
+      
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Employee was submitted successfully!</h4>
+        <button class="button" (click)="newEmployee()">Add</button>
+      </div>
+    </div>
+  
+  </div>

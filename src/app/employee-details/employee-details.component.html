@@ -1,0 +1,96 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentEmployee.id">
+      <h4>Employee</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentEmployee.name }}
+      </div>
+      <div>
+        <label><strong>Cost center:</strong></label>
+        {{ currentEmployee.costcenter }}
+      </div>
+      <div>
+        <label><strong>Manager:</strong></label>
+        {{ currentEmployee.manager }}
+      </div>
+  <br>
+      <a
+        class="buttonEdit"
+        routerLink="/employee/{{ currentEmployee.id }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentEmployee">
+      <br />
+      
+      <p>Please click on a Employee...</p>
+    </div>
+  </div>
+
+
+  <ng-template #editable>
+    <div *ngIf="currentEmployee.id" class="edit-form">
+      <h4>Employee</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentEmployee.name"
+            name="mame"
+            
+          />
+        </div>
+        <div class="form-group">
+          <label for="costcenter">Cost Center</label>
+          <input
+            type="text"
+            class="form-control"
+            id="costcenter"
+            [(ngModel)]="currentEmployee.costcenter"
+            name="costcenter"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="manager">Manager</label>
+            <input
+              type="text"
+              class="form-control"
+              id="manager"
+              [(ngModel)]="currentEmployee.manager"
+              name="manager"
+            />
+          </div>
+  
+       
+      </form>
+  
+      <br>
+  
+      <button class="buttonEdit" (click)="deleteEmployee();">
+        Delete
+      </button>
+     
+      <br>
+      <br>
+      <button
+        type="submit"
+        class="buttonEdit"
+        (click)="updateEmployee()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    
+    <div *ngIf="!currentEmployee.id">
+      <br />
+      <p>Cannot access this Tutorial...</p>
+    </div>
+  </ng-template>
+  
